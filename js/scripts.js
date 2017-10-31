@@ -18,10 +18,10 @@ Player.prototype.addScore = function(currentTotal) {
 }
 
 var playerSwitch = function() {
-  if (currentPlayer === "player2") {
-    currentPlayer = player1;
-  } else {
+  if (currentPlayer === player1) {
     currentPlayer = player2;
+  } else {
+    currentPlayer = player1;
   }
 }
 
@@ -57,12 +57,11 @@ $(document).ready(function() {
   })
 
   $("#hold").click(function(event) {
-    //console.log(currentPlayer);
+
     currentPlayer.totals.push(currentTotal);
-    //$("#player1-score").text(player1.addScore(currentTotal));
+    $("#player1-score").text(player1.addScore(currentTotal));
 
     playerSwitch();
-    console.log(currentPlayer);
   })
 
 })

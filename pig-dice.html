@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Pig Dice Game</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to the Pig Dice Game</h1>
+      <h3>Here are the rules to the game:</h3>
+      <ul>
+        <li>Roll a standard dice with numbers 1 through 6</li>
+        <li>If the rolled number is 1, that players turn is over and they pass the die to the next player without recording any score</li>
+        <li>If any other number is rolled, that number is added to their current score, and they have the option to roll again or hold, which will add their current score (for that round) to their total score for the game.</li>
+        <li>First player to score 100 points wins</li>
+      </ul>
+      <form id="playerNames">
+        <div class="form-group">
+          <label for="player1">Enter your name:</label>
+          <input id="player1" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="player2">Enter the second player's name:</label>
+          <input id="player2" class="form-control" type="text">
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+      <div class="play">
+        <h1><span class="player"></span>! It's your turn!</h1>
+        <button class="btn" type="button" id="roll">Roll!</button>
+        <button class="btn" type="button" id="hold">Hold</button>
+
+        <h4>Your roll is: <span id="rollResult"></span></h4>
+      </div>
+
+      <div class="scores">
+        <p>SCORES:</p>
+        <ol>
+          <li>Player1 name
+          <ul>
+            <li><span id="player1-score"></span></li>
+          </ul>
+          <li>Player2 name</li>
+          <ul>
+            <li>player2score</li>
+          </ul>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

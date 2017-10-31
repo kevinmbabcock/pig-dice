@@ -23,13 +23,13 @@ $(document).ready(function() {
     namePlayer1 = $("#player1").val();
     namePlayer2 = $("#player2").val();
 
-    var player1 = new Player(namePlayer1);
-    var player2 = new Player(namePlayer2);
-    //console.log(player1);
-    //console.log(player2);
+    player1 = new Player(namePlayer1);
+    player2 = new Player(namePlayer2);
+
     $("#playerNames").hide();
     $(".scores").show();
     $(".play").show();
+
   })
 
   $("#roll").click(function(event) {
@@ -47,7 +47,5 @@ $(document).ready(function() {
     player1.totals.push(currentTotal);
     $("#player1-score").text(player1.addScore(currentTotal));
   })
-
-
 
 })

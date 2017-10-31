@@ -1,3 +1,9 @@
+// initialize global variables
+var currentTotal = 0;
+var player1;
+var player2;
+var currentPlayer;
+
 function Player (name) {
   this.name = name;
   this.totals = [];
@@ -11,11 +17,15 @@ Player.prototype.addScore = function(currentTotal) {
   return playerScore;
 }
 
-$(document).ready(function() {
+var playerSwitch = function() {
+  if (currentPlayer === "player2") {
+    currentPlayer = player1;
+  } else {
+    currentPlayer = player2;
+  }
+}
 
-  var currentTotal = 0;
-  var player1;
-  var player2;
+$(document).ready(function() {
 
   $("#playerNames").submit(function(event) {
     event.preventDefault();
@@ -25,6 +35,8 @@ $(document).ready(function() {
 
     player1 = new Player(namePlayer1);
     player2 = new Player(namePlayer2);
+    currentPlayer = player1;
+    //console.log(currentPlayer);
 
     $("#playerNames").hide();
     $(".scores").show();
@@ -37,15 +49,20 @@ $(document).ready(function() {
     $("#rollResult").text(number);
     if (number === 1) {
       currentTotal = 0;
-      $("#roll").hide();
+
+      playerSwitch();
     } else {
       currentTotal += number;
     }
   })
 
   $("#hold").click(function(event) {
-    player1.totals.push(currentTotal);
-    $("#player1-score").text(player1.addScore(currentTotal));
+    //console.log(currentPlayer);
+    currentPlayer.totals.push(currentTotal);
+    //$("#player1-score").text(player1.addScore(currentTotal));
+
+    playerSwitch();
+    console.log(currentPlayer);
   })
 
 })

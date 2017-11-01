@@ -28,8 +28,18 @@ var playerSwitch = function() {
 var scoreToPlayer = function (currentPlayer, currentTotal) {
   if (currentPlayer === player1) {
     $("#player1-score").text(player1.addScore(currentTotal));
+    if (player1.addScore(currentTotal) >= 100) {
+      $(".play").hide();
+      $("#winner").text(player1.name);
+      $(".winner").show();
+    }
   } else {
     $("#player2-score").text(player2.addScore(currentTotal));
+    if (player2.addScore(currentTotal) >= 100) {
+      $(".play").hide();
+      $("#winner").text(player2.name);
+      $(".winner").show();
+    }
   }
 }
 

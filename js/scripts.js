@@ -25,6 +25,14 @@ var playerSwitch = function() {
   }
 }
 
+var scoreToPlayer = function (currentPlayer, currentTotal) {
+  if (currentPlayer === player1) {
+    $("#player1-score").text(player1.addScore(currentTotal));
+  } else {
+    $("#player2-score").text(player2.addScore(currentTotal));
+  }
+}
+
 $(document).ready(function() {
 
   $("#playerNames").submit(function(event) {
@@ -36,6 +44,9 @@ $(document).ready(function() {
     player1 = new Player(namePlayer1);
     player2 = new Player(namePlayer2);
     currentPlayer = player1;
+    $("#currentPlayerName").text(namePlayer1);
+    $("#player1-name").text(namePlayer1);
+    $("#player2-name").text(namePlayer2);
     //console.log(currentPlayer);
 
     $("#playerNames").hide();
@@ -49,19 +60,21 @@ $(document).ready(function() {
     $("#rollResult").text(number);
     if (number === 1) {
       currentTotal = 0;
-
+      scoreToPlayer(currentPlayer, currentTotal);
       playerSwitch();
+      $("#currentPlayerName").text(currentPlayer.name);
     } else {
       currentTotal += number;
     }
   })
 
   $("#hold").click(function(event) {
-
     currentPlayer.totals.push(currentTotal);
-    $("#player1-score").text(player1.addScore(currentTotal));
-
+    scoreToPlayer(currentPlayer, currentTotal);
+    currentTotal = 0;
     playerSwitch();
+    //console.log(currentPlayer.name);
+    $("#currentPlayerName").text(currentPlayer.name);
   })
 
 })

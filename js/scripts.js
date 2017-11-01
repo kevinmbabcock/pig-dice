@@ -66,6 +66,7 @@ $(document).ready(function() {
     } else {
       currentTotal += number;
     }
+    $("#roundTotal").text(currentTotal);
   })
 
   $("#hold").click(function(event) {
